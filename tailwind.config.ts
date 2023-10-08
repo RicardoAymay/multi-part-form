@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend:{
+      fontFamily: {
+        sans: ['var(--font-ubuntu)']
+      },
       colors: {
         'primary': {
           'MarineBlue':     "hsl(213, 96%, 18%)",
