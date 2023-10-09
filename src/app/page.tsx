@@ -4,6 +4,7 @@ import bgSidebarDesktop from "../assets/images/bg-sidebar-mobile.svg";
 import Steps from "@/components/Steps";
 import FormStep1 from "@/components/FormStep1";
 import Footer from "@/components/Footer";
+import FormStep2 from "@/components/FormStep2";
 
 export const ubuntu = Ubuntu({
   weight: ["400", "500", "700"],
@@ -24,7 +25,7 @@ export default function Home() {
           <Steps />
         </div>
 
-        <FormStep1 />
+        <FormStep2 />
       </main>
       <Footer />
     </>

@@ -27,7 +27,7 @@ const FormStep1 = () => {
         <input type="email" placeholder="e.g stephenking@lorem.com" id="email" {...register("email")} className="border-neutral-LightGray border-borderWid1 rounded-md h-10 mb-4 pl-4"/>
         
         <label htmlFor="phone" className="text-primary-MarineBlue font-medium">Phone Number</label>
-        <input type="tel" id="phone" {...register("phone")} className="border-neutral-LightGray border-borderWid1 rounded-md h-10 mb-4 pl-4"/>
+        <input type="tel" placeholder="e.g +1 234 567 890" id="phone" {...register("phone")} className="border-neutral-LightGray border-borderWid1 rounded-md h-10 mb-4 pl-4"/>
       </form>   
   );
 }; 
