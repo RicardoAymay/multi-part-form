@@ -8,7 +8,7 @@ const [step, setStep]=useState<Step>(1)
 const [formData, setFormData] = useState(null)
 
     return (
-        <MainContext.Provider value={{setFormData}}>
+        <MainContext.Provider value={{setFormData, step, setStep}}>
           {children}
         </MainContext.Provider>
       );

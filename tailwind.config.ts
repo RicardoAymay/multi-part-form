@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend:{
+      borderWidth:{
+        'borderWid1': '1px'
+      },
       fontFamily: {
         sans: ['var(--font-ubuntu)']
       },
