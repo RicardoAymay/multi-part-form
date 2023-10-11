@@ -14,11 +14,11 @@ const FormStep2 = () => {
     formState: { errors },
   } = useForm<iInputs2>();
   const onSubmit: SubmitHandler<iInputs2> = (data) => console.log(data);
-  const inputStyle = "bg-red"
+
   return (     
       <form id="form1" onSubmit={handleSubmit(onSubmit)} className="flex flex-col p-5 bg-white absolute w-11/12 rounded-lg left-1/2 translate-x-[-50%] translate-y-[28%]">
-        <p className="text-2xl text-primary-MarineBlue font-bold">Personal info</p>
-        <p className="text-primary-CoolGray mb-8 mt-2 font-normal">Please provide your name, email address and phone number.</p>
+        <p className="text-2xl text-primary-MarineBlue font-bold">Pick add-ons</p>
+        <p className="text-primary-CoolGray mb-8 mt-2 font-normal">Add-ons help enhance your gaming experience.</p>
 
         <label htmlFor="arcade" className="text-primary-MarineBlue font-medium">Arcade</label>
         <input type="radio" id="arcade" {...register("plan")} className="border-neutral-LightGray border-borderWid1 rounded-md h-10 mb-4 pl-4"/>
