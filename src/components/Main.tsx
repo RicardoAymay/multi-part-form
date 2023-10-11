@@ -4,33 +4,34 @@ import React, { useContext } from 'react'
 import FormStep1 from './FormStep1';
 import Steps from './Steps';
 import Footer from './Footer';
-import { ubuntu } from '@/app/page';
+
 import bgSidebarDesktop from "../assets/images/bg-sidebar-mobile.svg";
 import FormStep2 from '@/components/FormStep2';
 
 
 
+
 const Main = () => {
     const { step } = useContext(MainContext);
-    console.log(step);
+    
     let renderStep = () => {
       if (step === 1) {
         return <FormStep1 />;
       }
       if (step === 2){
-        return <FormStep2/>
+        return <FormStep2 />
       }
     };
   return (
     <>
     <main
-    className={`${ubuntu.variable} font-sans max-w-[1440px] min-w-[375px] flex flex-col flex-1 mr-auto ml-auto mt-0 bg-neutral-Magnolia`}
+    className={`max-w-[1440px] min-w-[375px] flex flex-col flex-1 mr-auto ml-auto mt-0 bg-neutral-Magnolia`}
   >
     <div
       style={{ backgroundImage: `url(${bgSidebarDesktop.src})` }}
       className="w-full flex h-1/4 bg-cover"
     >
-      <Steps />
+    <Steps />
     </div>
   </main>
   {renderStep()}
