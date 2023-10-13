@@ -13,7 +13,7 @@ const Footer = () => {
   const formStepChange = (ev:React.MouseEvent) => {
     ev.preventDefault()
     let text = (ev.target as HTMLButtonElement).innerText;
-    console.log(text)
+   
     if (step < 4 && text === "Next Step"){
      setStep(step + 1);
     }
@@ -22,7 +22,7 @@ const Footer = () => {
     }
     checkStep()
   };
-  
+
   return step === 1 ? (
     <footer
       className={`text-sm flex w-full h-[60px] bg-white items-center justify-end pr-4`}

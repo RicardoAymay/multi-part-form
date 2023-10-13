@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Image from "next/image";
 import arcadeImg from "../assets/images/icon-arcade.svg"
@@ -17,12 +17,25 @@ const FormStep2 = () => {
   } = useForm<iInputs2>();
   const onSubmit: SubmitHandler<iInputs2> = (data) => console.log(data);
 
-  const [getPlan, setGetPlan] = useState<iInputs2["plan"] | undefined>();
-
+  const [getPlan, setGetPlan] = useState<iInputs2["plan"]>("advanced");
+  const [recurrence, setRecurrence] = useState<iInputs2["recurrence"]>("monthly")
   const handlePlanChange = (event: React.MouseEvent<HTMLInputElement>) => {
     setGetPlan((event.target as HTMLInputElement).value as iInputs2["plan"]);
   };
+  const monthYear = () =>{
+    return recurrence === "monthly" ? "mr" : "ml"
+  }
 
+  const changeRecurrenceEvent = () =>{
+    if (recurrence === "monthly"){
+      setRecurrence("yearly")
+    }
+    if (recurrence === "yearly"){
+      setRecurrence("monthly")
+    }
+  }
+
+  
   return (
     <form
       id="form1"
@@ -36,7 +49,7 @@ const FormStep2 = () => {
 
       <label
         htmlFor="arcade"
-        className="text-primary-MarineBlue font-medium border-neutral-LightGray border-[1px] h-[4.5rem] rounded-md"
+        className="text-primary-MarineBlue font-medium border-neutral-LightGray border-borderWid1 h-[4.5rem] rounded-md"
       >
         <div className="w-full h-full flex">
           <figure className="w-1/5 flex items-center justify-center">
@@ -100,13 +113,13 @@ const FormStep2 = () => {
         />
       </label>
 
-      <label htmlFor="recurrence" className="w-full h-12 bg-neutral-LightGray mt-4 rounded-md flex items-center justify-center space-x-6">
+      <label htmlFor="recurrence" className="w-full h-12 bg-neutral-VeryLightGray mt-4 rounded-md flex items-center justify-center space-x-6">
         <p>Monthly</p>
-        <div className="w-7 h-4 bg-primary-MarineBlue rounded-2xl flex items-center justify-center">
-          <div className="bg-white w-3 h-3 rounded-full "></div>
+        <div className="w-10 h-5 bg-primary-MarineBlue rounded-2xl flex items-center justify-center ">
+          <div onClick={changeRecurrenceEvent} className={`bg-white w-3 h-3 rounded-full relative ${monthYear()}-4 ease-in-out duration-300`}></div>
         </div>
         <p>Yearly</p>
-        <input type="hidden" name="recurrence" />
+        <input type="hidden" name="recurrence" value={recurrence}/>
       </label>
     </form>
   );
