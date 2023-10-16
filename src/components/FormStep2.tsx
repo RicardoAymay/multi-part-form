@@ -23,7 +23,7 @@ const FormStep2 = () => {
     setGetPlan((event.target as HTMLInputElement).value as iInputs2["plan"]);
   };
   const monthYear = () =>{
-    return recurrence === "monthly" ? "mr" : "ml"
+    return recurrence === "monthly" ? "mr-4" : "ml-4"
   }
 
   const changeRecurrenceEvent = () =>{
@@ -40,7 +40,7 @@ const FormStep2 = () => {
     <form
       id="form1"
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col p-5 bg-white absolute w-11/12 rounded-lg left-1/2 translate-x-[-50%] translate-y-[28%]"
+      className="flex flex-col p-6 bg-white absolute w-11/12 rounded-lg left-1/2 translate-x-[-50%] translate-y-[21%]"
     >
       <p className="text-2xl text-primary-MarineBlue font-bold">Pick add-ons</p>
       <p className="text-primary-CoolGray mb-8 mt-2 font-normal">
@@ -116,7 +116,7 @@ const FormStep2 = () => {
       <label htmlFor="recurrence" className="w-full h-12 bg-neutral-VeryLightGray mt-4 rounded-md flex items-center justify-center space-x-6">
         <p>Monthly</p>
         <div className="w-10 h-5 bg-primary-MarineBlue rounded-2xl flex items-center justify-center ">
-          <div onClick={changeRecurrenceEvent} className={`bg-white w-3 h-3 rounded-full relative ${monthYear()}-4 ease-in-out duration-300`}></div>
+          <div onClick={changeRecurrenceEvent} className={`bg-white w-3 h-3 rounded-full relative ${monthYear()} ease-in-out duration-300`}></div>
         </div>
         <p>Yearly</p>
         <input type="hidden" name="recurrence" value={recurrence}/>
