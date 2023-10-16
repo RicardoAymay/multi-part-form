@@ -12,7 +12,7 @@ const FormStep3 = () => {
     <form
       id="form1"
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col p-6 bg-white absolute w-11/12 rounded-lg left-1/2 translate-x-[-50%] translate-y-[23%]"
+      className="flex flex-col p-6 bg-white absolute w-11/12 rounded-lg left-1/2 translate-x-[-50%] top-[14.8%]"
     >
       <p className="text-2xl text-primary-MarineBlue font-bold">Pick add-ons</p>
       <p className="text-primary-CoolGray mb-8 mt-2 font-normal">
