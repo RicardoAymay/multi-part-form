@@ -7,7 +7,8 @@ import Footer from './Footer';
 
 import bgSidebarDesktop from "../assets/images/bg-sidebar-mobile.svg";
 import FormStep2 from '@/components/FormStep2';
-import FormStep3 from './FormStep3';
+import FormStep3 from './FormStep3/FormStep3';
+import FormStep4 from './FormStep4';
 
 
 
@@ -24,6 +25,9 @@ const Main = () => {
       }
       if (step === 3){
         return <FormStep3/>
+      }
+      if (step === 4){
+        return <FormStep4/>
       }
     };
   return (

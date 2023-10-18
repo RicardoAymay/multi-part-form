@@ -14,10 +14,10 @@ const Steps = () => {
     
     const stepColor = (el : iStep) => {
         if (step === el.step){
-            return "text-primary-MarineBlue bg-primary-LightBlue border-primary-LightBlue border-2 rounded-full w-8 h-8 flex items-center justify-center"
+            return "text-primary-MarineBlue bg-primary-LightBlue border-primary-LightBlue border rounded-full w-8 h-8 flex items-center justify-center"
         }
         else{
-            return "bg-none text-white border-white border-2 rounded-full w-8 h-8 flex items-center justify-center"
+            return "bg-none text-white border-white border rounded-full w-8 h-8 flex items-center justify-center"
         }
     }
 

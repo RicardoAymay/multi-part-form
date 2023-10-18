@@ -16,7 +16,7 @@ const FormStep1 = () => {
   const onSubmit: SubmitHandler<iInputs> = (data) => console.log(data);
   const inputStyle = "bg-red"
   return (     
-      <form id="form1" onSubmit={handleSubmit(onSubmit)} className="flex flex-col p-6 bg-white absolute w-11/12 rounded-lg left-1/2 translate-x-[-50%] top-[14.8%]">
+      <form id="form1" onSubmit={handleSubmit(onSubmit)} className="flex flex-col p-6 bg-white absolute w-[350px] rounded-lg left-1/2 translate-x-[-50%] top-[14.8%]">
         <p className="text-2xl text-primary-MarineBlue font-bold">Personal info</p>
         <p className="text-primary-CoolGray mb-8 mt-2 font-normal">Please provide your name, email address and phone number.</p>
 

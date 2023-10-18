@@ -40,7 +40,7 @@ const Footer = () => {
     </footer>
   ) : (
     <footer
-      className={`text-sm flex w-full h-[72px] bg-white items-center justify-end pr-4 pl-4`}
+      className={`text-sm flex w-[375px] ml-auto mr-auto h-[72px] bg-white items-center justify-end pr-4 pl-4`}
     >
       <div className="flex w-full h-full items-center justify-between">
       <button
