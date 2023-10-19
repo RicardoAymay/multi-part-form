@@ -37,6 +37,7 @@ const FormStep3 = () => {
   const ifCheckedLabel = (checkedStatus: boolean) =>{
     return checkedStatus? "bg-neutral-Alabaster border border-primary-PurplishBlue" : "border border-neutral-LightGray"
   }
+
   return (
     <form
     id="form1"

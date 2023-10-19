@@ -5,7 +5,10 @@ export interface iMainValues {
 step: number,
 setFormData: Dispatch<SetStateAction<null>>,
 setStep: Dispatch<SetStateAction<number>>,
-checkStep: ()=> void
+checkStep: ()=> void,
+formReference: string,
+setFormReference: Dispatch<SetStateAction<string>>,
+formData: string | null
 }
 
 

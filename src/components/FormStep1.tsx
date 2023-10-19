@@ -8,6 +8,7 @@ interface iInputs {
 }
 
 const FormStep1 = () => {
+
   const {
     register,
     handleSubmit,

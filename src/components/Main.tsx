@@ -1,6 +1,6 @@
 "use client"
 import { MainContext } from '@/contexts/MainContext';
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import FormStep1 from './FormStep1';
 import Steps from './Steps';
 import Footer from './Footer';
@@ -13,20 +13,26 @@ import FormStep4 from './FormStep4';
 
 
 
+
 const Main = () => {
-    const { step } = useContext(MainContext);
+  
+    const { step, setFormReference} = useContext(MainContext);
     
     let renderStep = () => {
       if (step === 1) {
+        setFormReference("form1")
         return <FormStep1 />;
       }
       if (step === 2){
+        setFormReference("form2")
         return <FormStep2 />
       }
       if (step === 3){
+        setFormReference("form3")
         return <FormStep3/>
       }
       if (step === 4){
+        setFormReference("form4")
         return <FormStep4/>
       }
     };

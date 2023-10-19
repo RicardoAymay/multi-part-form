@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { MainContext } from "../contexts/MainContext";
 
 const Footer = () => {
-  const { step, setStep, checkStep } = useContext(MainContext);
+  const { step, setStep, checkStep, formReference } = useContext(MainContext);
   let formNumber = (step: number) => {
     if (step) {
       return `form${step}`;
@@ -44,7 +44,6 @@ const Footer = () => {
     >
       <div className="flex w-full h-full items-center justify-between">
       <button
-        form={formNumber(step)}
         type="button"
         onClick={formStepChange}
         className="h-10 w-[97px] text-primary-CoolGray rounded-[4px] flex items-center justify-center">Go back
@@ -52,10 +51,11 @@ const Footer = () => {
       
       <button
         type="submit"
+        form={formReference}
         onClick={formStepChange}
         className="h-10 w-[97px] bg-primary-MarineBlue text-white rounded-[4px] flex items-center justify-center"
       >
-        Next Step
+        {step === 4? "Confirm" : "Next Step"}
       </button>
       </div>
      
