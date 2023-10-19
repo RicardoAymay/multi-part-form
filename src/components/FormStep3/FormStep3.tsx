@@ -16,9 +16,7 @@ const FormStep3 = () => {
   const inputChecker = (ev: React.MouseEvent<HTMLLabelElement>) =>{
     ev.preventDefault()
     const labelFor = ev.currentTarget.htmlFor
-  
-   
-    
+      
     if (labelFor === "online"){
       
       setIsChecked1(!isChecked1)

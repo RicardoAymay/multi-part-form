@@ -5,7 +5,7 @@ import arcadeImg from "../assets/images/icon-arcade.svg"
 import advImg from "../assets/images/icon-advanced.svg"
 import proImg from "../assets/images/icon-pro.svg"
 interface iInputs2 {
-  plan: "arcade" | "advanced" | "pro";
+  plan: "arcade" | "advanced" | "pro" | null;
   recurrence: "monthly" | "yearly"
 }
 
@@ -17,7 +17,7 @@ const FormStep2 = () => {
   } = useForm<iInputs2>();
   const onSubmit: SubmitHandler<iInputs2> = (data) => console.log(data);
 
-  const [getPlan, setGetPlan] = useState<iInputs2["plan"]>("advanced");
+  const [getPlan, setGetPlan] = useState<iInputs2["plan"]>(null);
   const [recurrence, setRecurrence] = useState<iInputs2["recurrence"]>("monthly")
   const handlePlanChange = (event: React.MouseEvent<HTMLInputElement>) => {
     setGetPlan((event.target as HTMLInputElement).value as iInputs2["plan"]);
@@ -35,6 +35,14 @@ const FormStep2 = () => {
     }
   }
 
+  const setCheckedStyle = (plan: iInputs2["plan"]) => {
+    if (plan === getPlan) {
+      return "border border-primary-PurplishBlue bg-neutral-Alabaster";
+    } else {
+      return "border border-neutral-LightGray";
+    }
+  };
+  
   
   return (
     <form
@@ -47,9 +55,11 @@ const FormStep2 = () => {
         Add-ons help enhance your gaming experience.
       </p>
 
+<section className="flex flex-col w-full h-auto space-y-4">
+
       <label
         htmlFor="arcade"
-        className="text-primary-MarineBlue font-medium border-neutral-LightGray border-borderWid1 h-[4.5rem] rounded-md"
+        className={`text-primary-MarineBlue font-medium h-[4.5rem] w-full rounded-md ${setCheckedStyle("arcade")}`}
       >
         <div className="w-full h-full flex">
           <figure className="w-1/5 flex items-center justify-center">
@@ -65,13 +75,13 @@ const FormStep2 = () => {
           id="arcade"
           {...register("plan")}
           className="hidden"
-          value={"Arcade"}
+          value={"arcade"}
           checked={getPlan === "arcade"}
           onClick={handlePlanChange}
         />
       </label>
 
-      <label htmlFor="Advanced" className="text-primary-MarineBlue font-medium border-neutral-LightGray border-[1px] h-[4.5rem] rounded-md mt-3">
+      <label htmlFor="advanced" className={`text-primary-MarineBlue font-medium h-[4.5rem] rounded-md w-full ${setCheckedStyle("advanced")}`}>
       <div className="w-full h-full flex">
           <figure className="w-1/5 flex items-center justify-center">
             <Image src={advImg} alt="Arcarde!"/>
@@ -83,16 +93,16 @@ const FormStep2 = () => {
         </div>
         <input
           type="radio"
-          id="Advanced"
+          id="advanced"
           {...register("plan")}
           className="hidden"
-          value={"Advanced"}
+          value={"advanced"}
           checked={getPlan === "advanced"}
           onClick={handlePlanChange}
         />
       </label>
 
-      <label htmlFor="phone" className="text-primary-MarineBlue font-medium border-neutral-LightGray border-[1px] h-[4.5rem] rounded-md mt-3">
+      <label htmlFor="phone" className={`text-primary-MarineBlue font-medium h-[4.5rem] rounded-md ${setCheckedStyle("pro")}`}>
       <div className="w-full h-full flex">
           <figure className="w-1/5 flex items-center justify-center">
             <Image src={proImg} alt="Arcarde!"/>
@@ -107,13 +117,13 @@ const FormStep2 = () => {
           id="phone"
           {...register("plan")}
           className="hidden"
-          value={"Pro"}
+          value={"pro"}
           checked={getPlan === "pro"}
           onClick={handlePlanChange}
         />
       </label>
 
-      <label htmlFor="recurrence" className="w-full h-12 bg-neutral-VeryLightGray mt-4 rounded-md flex items-center justify-center space-x-6">
+      <label htmlFor="recurrence" className="w-full h-12 bg-neutral-VeryLightGray rounded-md flex items-center justify-center space-x-6">
         <p>Monthly</p>
         <div className="w-10 h-5 bg-primary-MarineBlue rounded-2xl flex items-center justify-center ">
           <div onClick={changeRecurrenceEvent} className={`bg-white w-3 h-3 rounded-full relative ${monthYear()} ease-in-out duration-300`}></div>
@@ -121,6 +131,8 @@ const FormStep2 = () => {
         <p>Yearly</p>
         <input type="hidden" id="recurrence" name="recurrence" value={recurrence}/>
       </label>
+
+</section>
     </form>
   );
 };

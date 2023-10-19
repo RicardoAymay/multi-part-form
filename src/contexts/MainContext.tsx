@@ -13,7 +13,6 @@ const [formReference, setFormReference] = useState<string>("form1")
 const checkStep = () =>{
   if(step>4 || step <1){
     setStep(1)
-    setFormData(null)
   }
 }
 

@@ -4,14 +4,6 @@ import { MainContext } from "../contexts/MainContext";
 
 const Footer = () => {
   const { step, setStep, checkStep, formReference } = useContext(MainContext);
-  let formNumber = (step: number) => {
-    if (step) {
-      return `form${step}`;
-    }
-    else{
-      throw new Error
-    }
-  };
 
   const formStepChange = (ev:React.MouseEvent) => {
     ev.preventDefault()
