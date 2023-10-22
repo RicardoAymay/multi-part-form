@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Image from "next/image";
 import imgCheck from "../../assets/images/icon-checkmark.svg";
+import FormHeader, { header3 } from "../FormHeader";
 
 
 
@@ -42,10 +43,8 @@ const FormStep3 = () => {
     onSubmit={handleSubmit(onSubmit)}
     className="flex flex-col p-6 bg-white absolute w-[350px] rounded-lg left-1/2 translate-x-[-50%] top-[14.8%]">
       
-      <p className="text-2xl text-primary-MarineBlue font-bold">Pick add-ons</p>
-      <p className="text-primary-CoolGray mb-8 mt-2 font-normal">
-        Add-ons help enhance your gaming experience.
-      </p>
+      <FormHeader p1={header3.title} p2={header3.subtitle} />
+      
       <section className="w-full min-h-fit space-y-3">
 
       <label onClick={inputChecker} htmlFor="online" className={`flex h-fit  rounded-md ${ifCheckedLabel(isChecked1)}`}>

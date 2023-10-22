@@ -4,19 +4,15 @@ import React, { useContext, useEffect, useState } from 'react'
 import FormStep1 from './FormStep1';
 import Steps from './Steps';
 import Footer from './Footer';
-
 import bgSidebarDesktop from "../assets/images/bg-sidebar-mobile.svg";
 import FormStep2 from '@/components/FormStep2';
 import FormStep3 from './FormStep3/FormStep3';
 import FormStep4 from './FormStep4';
 
 
-
-
-
 const Main = () => {
   
-    const { step, setFormReference} = useContext(MainContext);
+    const { step, setFormReference, formReference} = useContext(MainContext);
     
     useEffect(() => {
       if (step === 1) {
