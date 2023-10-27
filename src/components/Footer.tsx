@@ -1,7 +1,6 @@
-
 import React, { useContext } from "react";
 import { MainContext } from "../contexts/MainContext";
-import { set } from "react-hook-form";
+
 
 const Footer = () => {
   const { step, setStep, formReference} = useContext(MainContext);

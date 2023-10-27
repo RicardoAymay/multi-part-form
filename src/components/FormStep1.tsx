@@ -21,11 +21,7 @@ const FormStep1 = () => {
  const {formStepChange, setFormData, formData, step} = useContext(MainContext)
   const onSubmit: SubmitHandler<iForm1Inputs> = (data) => {console.log(data), setFormData(data), formStepChange()};
   
- //monitor the data
-  useEffect(() => {
-    console.log(`Form data has been TRIGGERED!`, formData);
-  }, [formData]);
-  
+
   //autofill since you can go back and change the data
   const autoFillInputs = () => {
     if (formData) {
@@ -37,7 +33,7 @@ const FormStep1 = () => {
 //autofill must aplly from the start and whenever the data changes and/or one comes back to check if it is correct
   useEffect(() => {
     autoFillInputs(); 
-    console.log(`Form data has been TRIGGERED!`, formData);
+    
   }, []); 
   useEffect(() => {
     autoFillInputs();

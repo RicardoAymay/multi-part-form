@@ -1,105 +1,57 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import Image from "next/image";
-import imgCheck from "../../assets/images/icon-checkmark.svg";
 import FormHeader, { header3 } from "../FormHeader";
+import { MainContext } from '../../contexts/MainContext';
+import { form3Info } from "./form3Info";
+import { iFormData } from '../../contexts/contextTypes/mainContextTypes';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { form3Schema } from "../Schemas/formSchemas";
+import InputForm3 from "./InputForm3";
 
-
-
+interface form3Data{
+online? : number;
+storage? : number;
+customProfile?: number
+}
 
 const FormStep3 = () => {
-  const [isChecked1, setIsChecked1] = useState(false);
-  const [isChecked2, setIsChecked2] = useState(false);
-  const [isChecked3, setIsChecked3] = useState(false);
+  const {recurrence, formStepChange, setFormData} = useContext(MainContext)
 
-  const { handleSubmit, register } = useForm();
+  const { handleSubmit, register, formState: {errors}, watch } = useForm<form3Data>({
+    
+    // resolver: yupResolver(form3Schema),
+    
+  });
 
-  const inputChecker = (ev: React.MouseEvent<HTMLLabelElement>) =>{
-    ev.preventDefault()
-    const labelFor = ev.currentTarget.htmlFor
-      
-    if (labelFor === "online"){
-      
-      setIsChecked1(!isChecked1)
-    }
-    if (labelFor === "storage"){
-      setIsChecked2(!isChecked2)
-    }
-    if (labelFor === "customProfile"){
-      setIsChecked3(!isChecked3)
-    }
-  }
-  const onSubmit: SubmitHandler<any> = (data) => console.log(data);
-  const ifCheckedFigure = (checkedStatus: boolean) =>{
-    return checkedStatus? "bg-primary-PurplishBlue border primary-PurplishBlue" : "bg-white border-neutral-LightGray"
-  }
-  const ifCheckedLabel = (checkedStatus: boolean) =>{
-    return checkedStatus? "bg-neutral-Alabaster border border-primary-PurplishBlue" : "border border-neutral-LightGray"
-  }
-
+  
+  const onSubmit: SubmitHandler<any> = (data : form3Data) => {
+    console.log(data)
+    formStepChange()
+    if(data){setFormData((prevData: iFormData) => ({...prevData, ...data}))}
+    };
+    
   return (
     <form
-    id="form1"
+    id="form3"
     onSubmit={handleSubmit(onSubmit)}
     className="flex flex-col p-6 bg-white absolute w-[350px] rounded-lg left-1/2 translate-x-[-50%] top-[14.8%]">
       
       <FormHeader p1={header3.title} p2={header3.subtitle} />
       
       <section className="w-full min-h-fit space-y-3">
-
-      <label onClick={inputChecker} htmlFor="online" className={`flex h-fit  rounded-md ${ifCheckedLabel(isChecked1)}`}>
-        <input {...register("online")} type="checkbox" hidden name="online" id="online"/>
-
-        <div className="w-2/12 h-16 flex items-center justify-center">
-          <figure className={`border w-5 h-5 rounded-md flex items-center justify-center transition-all ${ifCheckedFigure(isChecked1)}`}>
-            <Image src={imgCheck} alt=""/>
-          </figure>
-        </div>
-        <div className="w-6/12 h-16 flex flex-1 flex-col justify-center space-y-1">
-          <p className="text-sm text-primary-MarineBlue font-bold">Online service</p>
-          <p className="text-xs text-primary-CoolGray">Access to multiplayer games</p>
-        </div>
-        <div className="w-3/12 h-16 flex items-center justify-center ">
-          <p className="text-sm text-primary-PurplishBlue">+1/mo</p>
-        </div>
-      </label>
-
-      <label htmlFor="storage" onClick={inputChecker} className={`flex h-fit  rounded-md ${ifCheckedLabel(isChecked2)}`}>
-        <input {...register("storage")} type="checkbox" hidden name="storage" id="storage"/>
-
-        <div className="w-2/12 h-16 flex items-center justify-center">
-          <figure className={`border w-5 h-5 rounded-md flex items-center justify-center transition-all ${ifCheckedFigure(isChecked2)}`}>
-            <Image src={imgCheck} alt=""/>
-          </figure>
-        </div>
-        <div className="w-6/12 h-16 flex flex-1 flex-col justify-center space-y-1">
-          <p className="text-sm text-primary-MarineBlue font-bold">Larger storage</p>
-          <p className="text-xs text-primary-CoolGray">Extra 1TB of cloud save</p>
-        </div>
-        <div className="w-3/12 h-16 flex items-center justify-center ">
-          <p className="text-sm text-primary-PurplishBlue">+2/mo</p>
-        </div>
-      </label>
-
-      <label onClick={inputChecker} htmlFor="customProfile" className={`flex h-fit  rounded-md ${ifCheckedLabel(isChecked3)}`}>
-        <input {...register("customProfile")} type="checkbox" hidden name="customProfile" id="customProfile"/>
-
-        <div className="w-2/12 h-16 flex items-center justify-center">
-          <figure className={`border w-5 h-5 rounded-md flex items-center justify-center transition-all ${ifCheckedFigure(isChecked3)}`}>
-            <Image src={imgCheck} alt=""/>
-          </figure>
-        </div>
-        <div className="w-6/12 h-16 flex flex-1 flex-col justify-center space-y-1">
-          <p className="text-sm text-primary-MarineBlue font-bold">Online service</p>
-          <p className="text-xs text-primary-CoolGray">Access to multiplayer games</p>
-        </div>
-        <div className="w-3/12 h-16 flex items-center justify-center ">
-          <p className="text-sm text-primary-PurplishBlue">+2/mo</p>
-        </div>
-      </label>
-
+      {form3Info.map(((el) => <InputForm3 key={el.title}
+      alt="Icon"
+      id={el.id} 
+      title={el.title} 
+      subtitle={el.subtitle}
+      defaultValue={recurrence === "monthly"? el.monthPrice: el.yearPrice} 
+      price={recurrence === "monthly"? el.monthPrice: el.yearPrice}
+      defaultChecked={false}
+      {...register(el.id)}
+      />))}
+       
       </section>
-    
+
     </form>
   );
 };

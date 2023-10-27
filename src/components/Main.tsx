@@ -10,6 +10,7 @@ import FormStep3 from './FormStep3/FormStep3';
 import FormStep4 from './FormStep4';
 
 
+
 const Main = () => {
   
     const { step, setFormReference, formReference} = useContext(MainContext);
@@ -54,6 +55,7 @@ const Main = () => {
     </div>
   </main>
   {renderStep()}
+ 
   <Footer />
   </>
   )

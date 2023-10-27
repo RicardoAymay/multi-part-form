@@ -11,6 +11,11 @@ const config: Config = {
       borderWidth:{
         'borderWid1': '1px'
       },
+      extend: {
+        backgroundImage:{
+          'checkmark' : "url('/images/icon-checkmark.svg')"
+        }
+      },
       fontFamily: {
         sans: ['var(--font-ubuntu)']
       },

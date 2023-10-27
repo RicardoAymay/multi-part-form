@@ -7,7 +7,7 @@ import advImg from "../assets/images/icon-advanced.svg";
 import proImg from "../assets/images/icon-pro.svg";
 import { MainContext } from "../contexts/MainContext";
 import { form2Schema } from "./Schemas/formSchemas";
-import { iForm2Inputs } from "../contexts/contextTypes/mainContextTypes";
+import { iForm2Inputs, iForm1Inputs } from '../contexts/contextTypes/mainContextTypes';
 import FormHeader, { header2 } from "./FormHeader";
 
 interface iInputs2 {
@@ -16,7 +16,7 @@ interface iInputs2 {
 }
 
 const FormStep2 = () => {
-  const { formStepChange, recurrence, setGetPlan, setRecurrence, getPlan } =
+  const { formStepChange, recurrence, setGetPlan, setRecurrence, getPlan, setFormData, formData } =
     useContext(MainContext);
 
   const {
@@ -30,39 +30,50 @@ const FormStep2 = () => {
   });
 
   const onSubmit: SubmitHandler<iForm2Inputs> = (data) => {
-    console.log(data), formStepChange();
+    console.log(data), formStepChange(), setFormData((prevData : iForm1Inputs) => ({ ...prevData, ...data }));
   };
+  interface iPrice {
+    arcade: number;
+    advanced: number;
+    pro: number
+  }
+  
+  const monthlyPrice: iPrice = {
+    "arcade": 9,
+    "advanced": 12,
+    "pro": 15
+  }
+  const yearlyPrice: iPrice = {
+    "arcade": 90,
+    "advanced": 120,
+    "pro": 150,
+  }
 
-
+  
   useEffect(() => {
-    console.log(recurrence);
     if (recurrence === "monthly") {
-      setValue("recurrence", "monthly"); // Update the value using setValue
+      setValue("recurrence", "monthly"); 
     } else if (recurrence === "yearly") {
-      setValue("recurrence", "yearly"); // Update the value using setValue
+      setValue("recurrence", "yearly"); 
     }
-
   }, [recurrence, setRecurrence]);
-
+  
   const handlePlanChange = (event: React.MouseEvent<HTMLInputElement>) => {
     setGetPlan((event.target as HTMLInputElement).value as iInputs2["plan"]);
   };
   const monthYear = () => {
     return recurrence === "monthly" ? "mr-4" : "ml-4";
   };
-
   const changeRecurrenceEvent = () => {
-    console.log("test")
     if (recurrence === "monthly") {
       setRecurrence("yearly");
-      window.location.reload
+      
     }
     if (recurrence === "yearly") {
       setRecurrence("monthly");
-      window.location.reload
+      
     }
   };
-
   const setCheckedStyle = (plan: iInputs2["plan"]) => {
     if (plan === getPlan) {
       return "border border-primary-PurplishBlue bg-neutral-Alabaster";
@@ -80,6 +91,7 @@ const FormStep2 = () => {
       <FormHeader p1={header2.title} p2={header2.subtitle} />
 
       <section className="flex flex-col w-full h-auto space-y-4">
+
         <label
           htmlFor="arcade"
           className={`text-primary-MarineBlue font-medium h-[4.5rem] w-full rounded-md ${setCheckedStyle(
@@ -92,9 +104,11 @@ const FormStep2 = () => {
             </figure>
             <div className="flex flex-col flex-1 justify-center space-y-1">
               <p className="font-bold">Arcade</p>
-              <p className="text-primary-CoolGray text-sm">$9/mo</p>
+              <p className="text-primary-CoolGray text-sm">${recurrence === "monthly"? monthlyPrice.arcade : yearlyPrice.arcade}/{recurrence === "monthly"? "mo" : "yr"}</p>
             </div>
           </div>
+
+          
           <input
             type="radio"
             id="arcade"
@@ -118,7 +132,7 @@ const FormStep2 = () => {
             </figure>
             <div className="flex flex-col flex-1 justify-center">
               <p className="font-bold">Advanced</p>
-              <p className="text-primary-CoolGray">$12/mo</p>
+              <p className="text-primary-CoolGray">${recurrence === "monthly"? monthlyPrice.advanced : yearlyPrice.advanced}/{recurrence === "monthly"? "mo" : "yr"}</p>
             </div>
           </div>
           <input
@@ -144,7 +158,7 @@ const FormStep2 = () => {
             </figure>
             <div className="flex flex-col flex-1 justify-center">
               <p className="font-bold">Pro</p>
-              <p className="text-primary-CoolGray">$15/mo</p>
+              <p className="text-primary-CoolGray">${recurrence === "monthly"? monthlyPrice.pro : yearlyPrice.pro}/{recurrence === "monthly"? "mo" : "yr"}</p>
             </div>
           </div>
           <input

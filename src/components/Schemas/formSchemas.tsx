@@ -13,3 +13,11 @@ export const form2Schema = yup.object({
   plan: yup.string().oneOf(["arcade", "advanced", "pro"]).required(),
   recurrence: yup.string().oneOf(["monthly", "yearly"]).required(),
 });
+
+export const form3Schema = yup.object({
+  online: yup.number().nullable(),
+  storage: yup.number().nullable(),
+  customProfile: yup.number().notRequired()
+})
+
+
