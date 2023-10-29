@@ -22,7 +22,7 @@ const FormStep1 = () => {
   const onSubmit: SubmitHandler<iForm1Inputs> = (data) => {console.log(data), setFormData(data), formStepChange()};
   
 
-  //autofill since you can go back and change the data
+  
   const autoFillInputs = () => {
     if (formData) {
       setValue('name', formData.name);
@@ -30,10 +30,9 @@ const FormStep1 = () => {
       setValue('phone', formData.phone);
     }
   };
-//autofill must aplly from the start and whenever the data changes and/or one comes back to check if it is correct
+
   useEffect(() => {
-    autoFillInputs(); 
-    
+    autoFillInputs();  
   }, []); 
   useEffect(() => {
     autoFillInputs();

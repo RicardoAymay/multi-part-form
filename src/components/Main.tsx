@@ -7,7 +7,7 @@ import Footer from './Footer';
 import bgSidebarDesktop from "../assets/images/bg-sidebar-mobile.svg";
 import FormStep2 from '@/components/FormStep2';
 import FormStep3 from './FormStep3/FormStep3';
-import FormStep4 from './FormStep4';
+import FormStep4 from './FormStep4/FormStep4';
 
 
 

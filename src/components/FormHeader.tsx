@@ -1,24 +1,28 @@
 import React from 'react'
-export interface TitleSubtitle {
+export interface iTitleSubtitle {
   title: string;
   subtitle: string;
 }
 
-export const header1: TitleSubtitle = {
+export const header1: iTitleSubtitle = {
   title: "Personal info",
   subtitle: "Please provide your name, email address and phone number.",
 };
 
-export const header2: TitleSubtitle = {
+export const header2: iTitleSubtitle = {
   title: "Select your plan",
   subtitle: "You have the option of montly or yearly billing",
 };
 
-export const header3: TitleSubtitle = {
+export const header3: iTitleSubtitle = {
   title: "Pick add-ons",
   subtitle: "Add-ons help enhance your gaming experience.",
 };
 
+export const header4: iTitleSubtitle = {
+  title: "Finishing up",
+  subtitle: "Double-check everything looks OK before confirming.",
+}
 interface FormHeaderProps {
     p1: string;
     p2: string;

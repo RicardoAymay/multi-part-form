@@ -1,14 +1,18 @@
-interface iForm3Info {
-    id: string
-    title: string;
+export interface iForm3id {
+    id: "online" | "storage" | "customProfile"
+}
+export interface iForm3Info extends iForm3id {
+    title: "Online service" | "Larger storage" | "Customizable profile";
     subtitle: string;
     monthPrice: number;
     yearPrice: number;
 }
 
 
+
+
 export const form3Info: iForm3Info[] = [
-    {
+{
     id: "online",
     title: "Online service",
     subtitle: "Access to multiplayer games",

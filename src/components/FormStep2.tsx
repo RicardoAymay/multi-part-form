@@ -7,7 +7,10 @@ import advImg from "../assets/images/icon-advanced.svg";
 import proImg from "../assets/images/icon-pro.svg";
 import { MainContext } from "../contexts/MainContext";
 import { form2Schema } from "./Schemas/formSchemas";
-import { iForm2Inputs, iForm1Inputs } from '../contexts/contextTypes/mainContextTypes';
+import {
+  iForm2Inputs,
+  iForm1Inputs,
+} from "../contexts/contextTypes/mainContextTypes";
 import FormHeader, { header2 } from "./FormHeader";
 
 interface iInputs2 {
@@ -16,8 +19,15 @@ interface iInputs2 {
 }
 
 const FormStep2 = () => {
-  const { formStepChange, recurrence, setGetPlan, setRecurrence, getPlan, setFormData, formData } =
-    useContext(MainContext);
+  const {
+    formStepChange,
+    recurrence,
+    setGetPlan,
+    setRecurrence,
+    getPlan,
+    setFormData,
+    formData,
+  } = useContext(MainContext);
 
   const {
     register,
@@ -30,34 +40,40 @@ const FormStep2 = () => {
   });
 
   const onSubmit: SubmitHandler<iForm2Inputs> = (data) => {
-    console.log(data), formStepChange(), setFormData((prevData : iForm1Inputs) => ({ ...prevData, ...data }));
+   
+    const plan = data.plan
+    const price = data.recurrence === "monthly"? monthlyPrice[plan!] : yearlyPrice[plan!]
+    
+    const dataToset = {...data, pricePlan: price }
+    console.log(dataToset)
+      formStepChange()
+      setFormData((prevData: iForm1Inputs) => ({ ...prevData, ...dataToset }));
   };
   interface iPrice {
     arcade: number;
     advanced: number;
-    pro: number
-  }
-  
-  const monthlyPrice: iPrice = {
-    "arcade": 9,
-    "advanced": 12,
-    "pro": 15
-  }
-  const yearlyPrice: iPrice = {
-    "arcade": 90,
-    "advanced": 120,
-    "pro": 150,
+    pro: number;
   }
 
-  
+  const monthlyPrice: iPrice = {
+    arcade: 9,
+    advanced: 12,
+    pro: 15,
+  };
+  const yearlyPrice: iPrice = {
+    arcade: 90,
+    advanced: 120,
+    pro: 150,
+  };
+
   useEffect(() => {
     if (recurrence === "monthly") {
-      setValue("recurrence", "monthly"); 
+      setValue("recurrence", "monthly");
     } else if (recurrence === "yearly") {
-      setValue("recurrence", "yearly"); 
+      setValue("recurrence", "yearly");
     }
   }, [recurrence, setRecurrence]);
-  
+
   const handlePlanChange = (event: React.MouseEvent<HTMLInputElement>) => {
     setGetPlan((event.target as HTMLInputElement).value as iInputs2["plan"]);
   };
@@ -67,11 +83,9 @@ const FormStep2 = () => {
   const changeRecurrenceEvent = () => {
     if (recurrence === "monthly") {
       setRecurrence("yearly");
-      
     }
     if (recurrence === "yearly") {
       setRecurrence("monthly");
-      
     }
   };
   const setCheckedStyle = (plan: iInputs2["plan"]) => {
@@ -91,7 +105,6 @@ const FormStep2 = () => {
       <FormHeader p1={header2.title} p2={header2.subtitle} />
 
       <section className="flex flex-col w-full h-auto space-y-4">
-
         <label
           htmlFor="arcade"
           className={`text-primary-MarineBlue font-medium h-[4.5rem] w-full rounded-md ${setCheckedStyle(
@@ -104,11 +117,16 @@ const FormStep2 = () => {
             </figure>
             <div className="flex flex-col flex-1 justify-center space-y-1">
               <p className="font-bold">Arcade</p>
-              <p className="text-primary-CoolGray text-sm">${recurrence === "monthly"? monthlyPrice.arcade : yearlyPrice.arcade}/{recurrence === "monthly"? "mo" : "yr"}</p>
+              <p className="text-primary-CoolGray text-sm">
+                $
+                {recurrence === "monthly"
+                  ? monthlyPrice.arcade
+                  : yearlyPrice.arcade}
+                /{recurrence === "monthly" ? "mo" : "yr"}
+              </p>
             </div>
           </div>
 
-          
           <input
             type="radio"
             id="arcade"
@@ -132,7 +150,13 @@ const FormStep2 = () => {
             </figure>
             <div className="flex flex-col flex-1 justify-center">
               <p className="font-bold">Advanced</p>
-              <p className="text-primary-CoolGray">${recurrence === "monthly"? monthlyPrice.advanced : yearlyPrice.advanced}/{recurrence === "monthly"? "mo" : "yr"}</p>
+              <p className="text-primary-CoolGray">
+                $
+                {recurrence === "monthly"
+                  ? monthlyPrice.advanced
+                  : yearlyPrice.advanced}
+                /{recurrence === "monthly" ? "mo" : "yr"}
+              </p>
             </div>
           </div>
           <input
@@ -158,7 +182,10 @@ const FormStep2 = () => {
             </figure>
             <div className="flex flex-col flex-1 justify-center">
               <p className="font-bold">Pro</p>
-              <p className="text-primary-CoolGray">${recurrence === "monthly"? monthlyPrice.pro : yearlyPrice.pro}/{recurrence === "monthly"? "mo" : "yr"}</p>
+              <p className="text-primary-CoolGray">
+                ${recurrence === "monthly" ? monthlyPrice.pro : yearlyPrice.pro}
+                /{recurrence === "monthly" ? "mo" : "yr"}
+              </p>
             </div>
           </div>
           <input

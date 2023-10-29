@@ -2,32 +2,58 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import FormHeader, { header3 } from "../FormHeader";
 import { MainContext } from '../../contexts/MainContext';
-import { form3Info } from "./form3Info";
+import { form3Info, iForm3Info, iForm3id } from "./form3Info";
 import { iFormData } from '../../contexts/contextTypes/mainContextTypes';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { form3Schema } from "../Schemas/formSchemas";
 import InputForm3 from "./InputForm3";
 
+
 interface form3Data{
-online? : number;
-storage? : number;
-customProfile?: number
+online? : number | false
+storage? : number | false
+customProfile?: number | false
 }
 
 const FormStep3 = () => {
   const {recurrence, formStepChange, setFormData} = useContext(MainContext)
-
-  const { handleSubmit, register, formState: {errors}, watch } = useForm<form3Data>({
+  const { handleSubmit, register, formState: {errors}} = useForm<form3Data>({
     
     // resolver: yupResolver(form3Schema),
     
   });
-
-  
+   
   const onSubmit: SubmitHandler<any> = (data : form3Data) => {
-    console.log(data)
+    const filterAddons = () => {
+      const addon = []
+      if (data.online && data.online > 0){
+        addon.push( {
+          title: "Online service",
+          value: +data.online,
+        })
+      }
+
+      if (data.storage && data.storage>0){
+        addon.push({
+          title: "Larger storage",
+          value: +data.storage,
+        })
+      }
+      if (data.customProfile && data.customProfile>0){
+        addon.push({
+          title: "Customizable profile",
+          value: +data.customProfile,
+        })
+      }
+      return addon
+    }
+
+    const addons = filterAddons()
+    console.log(addons)
+    const addonsTotal = addons.reduce((acc, current) => acc + current.value, 0);
+    console.log(addonsTotal)
     formStepChange()
-    if(data){setFormData((prevData: iFormData) => ({...prevData, ...data}))}
+    if(data){setFormData((prevData: iFormData) => ({...prevData, addons, addonsTotal}))}
     };
     
   return (
@@ -46,7 +72,6 @@ const FormStep3 = () => {
       subtitle={el.subtitle}
       defaultValue={recurrence === "monthly"? el.monthPrice: el.yearPrice} 
       price={recurrence === "monthly"? el.monthPrice: el.yearPrice}
-      defaultChecked={false}
       {...register(el.id)}
       />))}
        
