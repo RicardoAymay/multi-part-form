@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { MainContext } from "../../contexts/MainContext";
 import ChosenAddons from './ChosenAddons';
-import FormHeader, { header4 } from "../FormHeader";
+import {FormHeader, header4 } from "../FormHeader";
 
 
 const FormStep4 = () => {

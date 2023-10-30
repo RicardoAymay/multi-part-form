@@ -6,12 +6,12 @@ import arcadeImg from "../assets/images/icon-arcade.svg";
 import advImg from "../assets/images/icon-advanced.svg";
 import proImg from "../assets/images/icon-pro.svg";
 import { MainContext } from "../contexts/MainContext";
-import { form2Schema } from "./Schemas/formSchemas";
+import { form2Schema } from "../schemas/formSchemas";
 import {
   iForm2Inputs,
   iForm1Inputs,
 } from "../contexts/contextTypes/mainContextTypes";
-import FormHeader, { header2 } from "./FormHeader";
+import {FormHeader,  header2 } from "./FormHeader";
 
 interface iInputs2 {
   plan: "arcade" | "advanced" | "pro" | null;

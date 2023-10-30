@@ -4,7 +4,7 @@ import "yup-phone-lite"
 export const form1schema = yup.object({
   name: yup.string().required(),
   email: yup.string().email().required(),
-  phone: yup.string().phone("US").required("A phone number is required"),
+  phone: yup.string().required("A phone number is required"),
 
 }).required();
 

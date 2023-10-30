@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
 import { MainContext } from "../contexts/MainContext";
 
+const footerStyle = "text-sm flex max-md:w-screen ml-auto mb-0 mt-auto mr-auto h-[72px] bg-white items-center justify-end pr-4 pl-4"
 
 const Footer = () => {
-  const { step, setStep, formReference} = useContext(MainContext);
+  const { step, setStep, formReference, confirm, setConfirm} = useContext(MainContext);
 if(step === 1){
   return  (
     <footer
-      className={`text-sm flex w-[375px] ml-auto mr-auto h-[72px] bg-white items-center justify-end pr-4 pl-4`}
+      className={footerStyle}
     >
       <button
         type="submit"
@@ -23,7 +24,7 @@ else if (step>1 && step<4){
   
   return (
     <footer
-      className={`text-sm flex w-[375px] ml-auto mr-auto h-[72px] bg-white items-center justify- pr-2 pl-2`}
+      className={footerStyle}
     >
       <div className="flex w-full h-full items-center justify-between">
       <button
@@ -46,8 +47,8 @@ else if (step>1 && step<4){
 }
 
 else if (step===4){
-  return (<footer
-  className={`text-sm flex w-[375px] ml-auto mr-auto h-[72px] bg-white items-center justify- pr-2 pl-2`}
+  return confirm===true? "" :  (<footer
+  className={footerStyle}
 >
   <div className="flex w-full h-full items-center justify-between">
   <button
@@ -58,10 +59,10 @@ else if (step===4){
   
   <button
     type="submit"
-    onClick={()=> setStep(step + 1)}
-    className="h-10 w-[97px] bg-primary-MarineBlue text-white rounded-[4px] flex items-center justify-center"
+    onClick={()=> setConfirm(!confirm)}
+    className="h-10 w-[97px] bg-primary-PurplishBlue text-white rounded-[4px] flex items-center justify-center"
   >
-    "Confirm"
+    Confirm
   </button>
   </div>
  

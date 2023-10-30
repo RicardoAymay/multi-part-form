@@ -17,7 +17,7 @@ export const MainProvider = ({ children }: iMainProvider) => {
   const [isChecked1, setIsChecked1] = useState(false);
   const [isChecked2, setIsChecked2] = useState(false);
   const [isChecked3, setIsChecked3] = useState(false);
-
+  const [confirm, setConfirm] = useState(false)
   const formStepChange = () => {
     if (step > 0 && step < 4) {setStep(step + 1)};
 
@@ -54,7 +54,9 @@ export const MainProvider = ({ children }: iMainProvider) => {
         isChecked3,
         setIsChecked1,
         setIsChecked2,
-        setIsChecked3
+        setIsChecked3,
+        confirm,
+        setConfirm
       }}
     >
       {children}

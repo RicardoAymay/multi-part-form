@@ -19,6 +19,8 @@ export interface iMainValues {
   setIsChecked1: Dispatch<SetStateAction<boolean>>;
   setIsChecked2: Dispatch<SetStateAction<boolean>>;
   setIsChecked3: Dispatch<SetStateAction<boolean>>;
+  confirm : boolean,
+  setConfirm: Dispatch<SetStateAction<boolean>>;
 }
 
 export interface iForm1Inputs {

@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import FormHeader, { header3 } from "../FormHeader";
+import {FormHeader, header3 } from "../FormHeader";
 import { MainContext } from '../../contexts/MainContext';
-import { form3Info, iForm3Info, iForm3id } from "./form3Info";
+
 import { iFormData } from '../../contexts/contextTypes/mainContextTypes';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { form3Schema } from "../Schemas/formSchemas";
+import { form3Schema } from "../../schemas/formSchemas";
 import InputForm3 from "./InputForm3";
+import { form3Info } from "./form3Info";
 
 
 interface form3Data{
