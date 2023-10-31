@@ -95,30 +95,30 @@ const FormStep2 = () => {
       return "border border-neutral-LightGray";
     }
   };
-
+  
   return (
     <form
       id="form2"
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col p-6 bg-white absolute w-11/12 rounded-lg maxmd:left-1/2 maxmd:translate-x-[-50%] top-[100px] maxmd:drop-shadow-xl md:static md:h-8/12 md:flex-1"
+      className="flex flex-col p-6 bg-white absolute w-10/12 rounded-lg maxmd:left-1/2 maxmd:translate-x-[-50%] top-[100px] maxmd:drop-shadow-xl md:static md:h-8/12 md:flex-1"
     >
       <FormHeader p1={header2.title} p2={header2.subtitle} />
 
       <section className="flex flex-col md:flex-1 w-full h-auto maxmd:space-y-4">
-        <div className="flex maxmd:flex-col items-center justify-between md:h-40 mb-6">
+        <div className="flex maxmd:flex-col maxmd:space-y-4 items-center justify-between md:h-40 mb-6">
           <label
             htmlFor="arcade"
-            className={`text-primary-MarineBlue md:p-3 md:h-full md:flex md:flex-col font-medium h-[4.5rem] w-full md:w-[30%] rounded-md ${setCheckedStyle(
+            className={`text-primary-MarineBlue md:p-3 md:h-full md:flex md:flex-col h-[4.5rem] w-full md:w-[30%] rounded-md ${setCheckedStyle(
               "arcade"
             )}`}
           >
-            <div className="w-full h-fit flex md:flex-col">
+            <div className="w-full h-full flex md:flex-col">
 
-              <figure className="w-1/5 md:w-fit flex items-center justify-center">
+              <figure className="w-1/5 md:w-fit flex maxmd:items-center maxmd:justify-center md:flex-1">
                 <Image src={arcadeImg} alt="Arcarde!" />
               </figure>
 
-              <div className="flex flex-col flex-1 justify-center space-y-1">
+              <div className="flex flex-col flex-1 maxmd:justify-center md:grid md:grid-rows-2">
                 <p className="font-bold">Arcade</p>
                 <p className="text-primary-CoolGray text-sm">
                   $
@@ -143,12 +143,12 @@ const FormStep2 = () => {
 
           <label
             htmlFor="advanced"
-            className={`text-primary-MarineBlue md:h-full font-medium md:w-[30%] h-[4.5rem] rounded-md w-full ${setCheckedStyle(
+            className={`text-primary-MarineBlue md:p-3 md:h-full md:flex md:flex-col h-[4.5rem] w-full md:w-[30%] rounded-md ${setCheckedStyle(
               "advanced"
             )}`}
           >
-            <div className="w-full h-full flex">
-              <figure className="w-1/5 flex items-center justify-center">
+            <div className="w-full h-full flex md:flex-col">
+              <figure className="w-1/5 md:w-fit flex maxmd:items-center maxmd:justify-center md:flex-1">
                 <Image src={advImg} alt="Arcarde!" />
               </figure>
               <div className="flex flex-col flex-1 justify-center">
@@ -175,12 +175,12 @@ const FormStep2 = () => {
 
           <label
             htmlFor="pro"
-            className={`text-primary-MarineBlue md:h-full font-medium md:w-[30%] h-[4.5rem] rounded-md ${setCheckedStyle(
+            className={`text-primary-MarineBlue md:p-3 md:h-full md:flex md:flex-col h-[4.5rem] w-full md:w-[30%] rounded-md ${setCheckedStyle(
               "pro"
             )}`}
           >
-            <div className="w-full h-full flex">
-              <figure className="w-1/5 flex items-center justify-center">
+            <div className="w-full h-full flex md:flex-col">
+              <figure className="w-1/5 md:w-fit flex maxmd:items-center maxmd:justify-center md:flex-1">
                 <Image src={proImg} alt="Arcarde!" />
               </figure>
               <div className="flex flex-col flex-1 justify-center">

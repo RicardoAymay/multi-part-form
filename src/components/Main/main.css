@@ -1,0 +1,5 @@
+@media (max-width: 767px) {
+    #divTop {
+      background-image: url("../../assets/images/bg-sidebar-mobile.svg");
+    }
+  }

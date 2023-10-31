@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { MainContext } from "../contexts/MainContext";
 
-const footerStyle = "text-sm flex maxmd:w-screen md:w-11/12 ml-auto mb-0 mt-auto mr-auto h-[72px] bg-white items-center justify-end pr-4 pl-4"
+const footerStyle = "text-sm flex maxmd:absolute maxmd:bottom-0 maxmd:w-screen md:w-10/12 ml-auto mb-0 mt-auto mr-auto h-[72px] bg-white items-center justify-end pr-4 pl-4"
 
 const Footer = () => {
   const { step, setStep, formReference, confirm, setConfirm} = useContext(MainContext);
@@ -29,7 +29,7 @@ else if (step>1 && step<4){
       <div className="flex w-full h-full items-center justify-between">
       <button
         type="button"
-        onClick={() => setStep(step - 1)}
+        onClick={() => {setStep(step - 1)}}
         className="h-10 w-[97px] text-primary-CoolGray rounded-[4px] flex items-center justify-center">Go back
       </button>
       

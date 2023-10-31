@@ -61,7 +61,7 @@ const FormStep3 = () => {
     <form
     id="form3"
     onSubmit={handleSubmit(onSubmit)}
-    className="flex flex-col p-6 bg-white absolute w-11/12 rounded-lg left-1/2 translate-x-[-50%] top-[100px] drop-shadow-xl">
+    className="flex flex-col p-6 bg-white absolute w-10/12 rounded-lg maxmd:left-1/2 maxmd:translate-x-[-50%] top-[100px] maxmd:drop-shadow-xl md:static md:h-8/12 md:flex-1">
       
       <FormHeader p1={header3.title} p2={header3.subtitle} />
       
