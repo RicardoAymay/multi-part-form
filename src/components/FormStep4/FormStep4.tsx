@@ -17,7 +17,7 @@ const FormStep4 = () => {
   return (
     <form
       id="form4"
-      className="flex flex-col p-6 bg-white absolute w-[350px] rounded-lg left-1/2 translate-x-[-50%] top-[14.8%]"
+      className="flex flex-col p-6 bg-white absolute w-11/12 rounded-lg left-1/2 translate-x-[-50%] top-[100px] drop-shadow-xl"
     >
      <FormHeader p1={header4.title} p2={header4.subtitle} />
 

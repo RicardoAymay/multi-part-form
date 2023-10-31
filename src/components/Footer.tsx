@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { MainContext } from "../contexts/MainContext";
 
-const footerStyle = "text-sm flex max-md:w-screen ml-auto mb-0 mt-auto mr-auto h-[72px] bg-white items-center justify-end pr-4 pl-4"
+const footerStyle = "text-sm flex maxmd:w-screen md:w-11/12 ml-auto mb-0 mt-auto mr-auto h-[72px] bg-white items-center justify-end pr-4 pl-4"
 
 const Footer = () => {
   const { step, setStep, formReference, confirm, setConfirm} = useContext(MainContext);

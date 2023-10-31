@@ -11,7 +11,7 @@ import {
   iForm2Inputs,
   iForm1Inputs,
 } from "../contexts/contextTypes/mainContextTypes";
-import {FormHeader,  header2 } from "./FormHeader";
+import { FormHeader, header2 } from "./FormHeader";
 
 interface iInputs2 {
   plan: "arcade" | "advanced" | "pro" | null;
@@ -40,14 +40,14 @@ const FormStep2 = () => {
   });
 
   const onSubmit: SubmitHandler<iForm2Inputs> = (data) => {
-   
-    const plan = data.plan
-    const price = data.recurrence === "monthly"? monthlyPrice[plan!] : yearlyPrice[plan!]
-    
-    const dataToset = {...data, pricePlan: price }
-    console.log(dataToset)
-      formStepChange()
-      setFormData((prevData: iForm1Inputs) => ({ ...prevData, ...dataToset }));
+    const plan = data.plan;
+    const price =
+      data.recurrence === "monthly" ? monthlyPrice[plan!] : yearlyPrice[plan!];
+
+    const dataToset = { ...data, pricePlan: price };
+    console.log(dataToset);
+    formStepChange();
+    setFormData((prevData: iForm1Inputs) => ({ ...prevData, ...dataToset }));
   };
   interface iPrice {
     arcade: number;
@@ -100,105 +100,113 @@ const FormStep2 = () => {
     <form
       id="form2"
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col p-6 bg-white absolute w-[350px] rounded-lg left-1/2 translate-x-[-50%] top-[14.8%]"
+      className="flex flex-col p-6 bg-white absolute w-11/12 rounded-lg maxmd:left-1/2 maxmd:translate-x-[-50%] top-[100px] maxmd:drop-shadow-xl md:static md:h-8/12 md:flex-1"
     >
       <FormHeader p1={header2.title} p2={header2.subtitle} />
 
-      <section className="flex flex-col w-full h-auto space-y-4">
-        <label
-          htmlFor="arcade"
-          className={`text-primary-MarineBlue font-medium h-[4.5rem] w-full rounded-md ${setCheckedStyle(
-            "arcade"
-          )}`}
-        >
-          <div className="w-full h-full flex">
-            <figure className="w-1/5 flex items-center justify-center">
-              <Image src={arcadeImg} alt="Arcarde!" />
-            </figure>
-            <div className="flex flex-col flex-1 justify-center space-y-1">
-              <p className="font-bold">Arcade</p>
-              <p className="text-primary-CoolGray text-sm">
-                $
-                {recurrence === "monthly"
-                  ? monthlyPrice.arcade
-                  : yearlyPrice.arcade}
-                /{recurrence === "monthly" ? "mo" : "yr"}
-              </p>
-            </div>
-          </div>
+      <section className="flex flex-col md:flex-1 w-full h-auto maxmd:space-y-4">
+        <div className="flex maxmd:flex-col items-center justify-between md:h-40 mb-6">
+          <label
+            htmlFor="arcade"
+            className={`text-primary-MarineBlue md:p-3 md:h-full md:flex md:flex-col font-medium h-[4.5rem] w-full md:w-[30%] rounded-md ${setCheckedStyle(
+              "arcade"
+            )}`}
+          >
+            <div className="w-full h-fit flex md:flex-col">
 
-          <input
-            type="radio"
-            id="arcade"
-            {...register("plan")}
-            className="hidden"
-            value={"arcade"}
-            checked={getPlan === "arcade"}
-            onClick={handlePlanChange}
-          />
-        </label>
+              <figure className="w-1/5 md:w-fit flex items-center justify-center">
+                <Image src={arcadeImg} alt="Arcarde!" />
+              </figure>
 
-        <label
-          htmlFor="advanced"
-          className={`text-primary-MarineBlue font-medium h-[4.5rem] rounded-md w-full ${setCheckedStyle(
-            "advanced"
-          )}`}
-        >
-          <div className="w-full h-full flex">
-            <figure className="w-1/5 flex items-center justify-center">
-              <Image src={advImg} alt="Arcarde!" />
-            </figure>
-            <div className="flex flex-col flex-1 justify-center">
-              <p className="font-bold">Advanced</p>
-              <p className="text-primary-CoolGray">
-                $
-                {recurrence === "monthly"
-                  ? monthlyPrice.advanced
-                  : yearlyPrice.advanced}
-                /{recurrence === "monthly" ? "mo" : "yr"}
-              </p>
+              <div className="flex flex-col flex-1 justify-center space-y-1">
+                <p className="font-bold">Arcade</p>
+                <p className="text-primary-CoolGray text-sm">
+                  $
+                  {recurrence === "monthly"
+                    ? monthlyPrice.arcade
+                    : yearlyPrice.arcade}
+                  /{recurrence === "monthly" ? "mo" : "yr"}
+                </p>
+              </div>
             </div>
-          </div>
-          <input
-            type="radio"
-            id="advanced"
-            {...register("plan")}
-            className="hidden"
-            value={"advanced"}
-            checked={getPlan === "advanced"}
-            onClick={handlePlanChange}
-          />
-        </label>
 
-        <label
-          htmlFor="pro"
-          className={`text-primary-MarineBlue font-medium h-[4.5rem] rounded-md ${setCheckedStyle(
-            "pro"
-          )}`}
-        >
-          <div className="w-full h-full flex">
-            <figure className="w-1/5 flex items-center justify-center">
-              <Image src={proImg} alt="Arcarde!" />
-            </figure>
-            <div className="flex flex-col flex-1 justify-center">
-              <p className="font-bold">Pro</p>
-              <p className="text-primary-CoolGray">
-                ${recurrence === "monthly" ? monthlyPrice.pro : yearlyPrice.pro}
-                /{recurrence === "monthly" ? "mo" : "yr"}
-              </p>
+            <input
+              type="radio"
+              id="arcade"
+              {...register("plan")}
+              className="hidden"
+              value={"arcade"}
+              checked={getPlan === "arcade"}
+              onClick={handlePlanChange}
+            />
+          </label>
+
+          <label
+            htmlFor="advanced"
+            className={`text-primary-MarineBlue md:h-full font-medium md:w-[30%] h-[4.5rem] rounded-md w-full ${setCheckedStyle(
+              "advanced"
+            )}`}
+          >
+            <div className="w-full h-full flex">
+              <figure className="w-1/5 flex items-center justify-center">
+                <Image src={advImg} alt="Arcarde!" />
+              </figure>
+              <div className="flex flex-col flex-1 justify-center">
+                <p className="font-bold">Advanced</p>
+                <p className="text-primary-CoolGray">
+                  $
+                  {recurrence === "monthly"
+                    ? monthlyPrice.advanced
+                    : yearlyPrice.advanced}
+                  /{recurrence === "monthly" ? "mo" : "yr"}
+                </p>
+              </div>
             </div>
-          </div>
-          <input
-            type="radio"
-            id="pro"
-            {...register("plan")}
-            className="hidden"
-            value={"pro"}
-            checked={getPlan === "pro"}
-            onClick={handlePlanChange}
-          />
-        </label>
-        {errors.plan && <p className="text-red-600">{errors.plan.message}</p>}
+            <input
+              type="radio"
+              id="advanced"
+              {...register("plan")}
+              className="hidden"
+              value={"advanced"}
+              checked={getPlan === "advanced"}
+              onClick={handlePlanChange}
+            />
+          </label>
+
+          <label
+            htmlFor="pro"
+            className={`text-primary-MarineBlue md:h-full font-medium md:w-[30%] h-[4.5rem] rounded-md ${setCheckedStyle(
+              "pro"
+            )}`}
+          >
+            <div className="w-full h-full flex">
+              <figure className="w-1/5 flex items-center justify-center">
+                <Image src={proImg} alt="Arcarde!" />
+              </figure>
+              <div className="flex flex-col flex-1 justify-center">
+                <p className="font-bold">Pro</p>
+                <p className="text-primary-CoolGray">
+                  $
+                  {recurrence === "monthly"
+                    ? monthlyPrice.pro
+                    : yearlyPrice.pro}
+                  /{recurrence === "monthly" ? "mo" : "yr"}
+                </p>
+              </div>
+            </div>
+            <input
+              type="radio"
+              id="pro"
+              {...register("plan")}
+              className="hidden"
+              value={"pro"}
+              checked={getPlan === "pro"}
+              onClick={handlePlanChange}
+            />
+          </label>
+          {errors.plan && <p className="text-red-600">{errors.plan.message}</p>}
+        </div>
+
 
         <label
           htmlFor="recurrence"

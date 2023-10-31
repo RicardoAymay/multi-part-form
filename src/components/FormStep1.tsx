@@ -10,7 +10,6 @@ import { form1schema } from "@/schemas/formSchemas";
 
 
 
-
 const FormStep1 = () => {
   const {
     register,
@@ -40,11 +39,12 @@ const FormStep1 = () => {
     autoFillInputs();
   }, [formData, step]);
 
+  
   return (
     <form
       id="form1"
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col p-6 bg-white absolute w-[90%] rounded-lg left-1/2 translate-x-[-50%] top-[100px]"
+      className="flex flex-col p-6 bg-white absolute w-11/12 rounded-lg maxmd:left-1/2 maxmd:translate-x-[-50%] top-[100px] maxmd:drop-shadow-xl md:static"
     >
       <FormHeader p1={header1.title} p2={header1.subtitle} />
 
@@ -57,7 +57,7 @@ const FormStep1 = () => {
         placeholder="e.g Stephen King"
         id="name"
         {...register("name")}
-        className="border-neutral-LightGray border-borderWid1 rounded-md h-10 mb-4 pl-4"
+        className="border-neutral-LightGray border-borderWid1 rounded-md h-10 mb-4 pl-3"
       />
 
 
@@ -69,7 +69,7 @@ const FormStep1 = () => {
         placeholder="e.g stephenking@lorem.com"
         id="email"
         {...register("email")}
-        className="border-neutral-LightGray border-borderWid1 rounded-md h-10 mb-4 pl-4" 
+        className="border-neutral-LightGray border-borderWid1 rounded-md h-10 mb-4 pl-3" 
       />
 
 
@@ -81,7 +81,7 @@ const FormStep1 = () => {
         placeholder="e.g +1 234 567 890"
         id="phone"
         {...register("phone")}
-        className="border-neutral-LightGray border-borderWid1 rounded-md h-10 mb-4 pl-4"
+        className="border-neutral-LightGray border-borderWid1 rounded-md h-10 mb-4 pl-3"
       />
     </form>
   );
