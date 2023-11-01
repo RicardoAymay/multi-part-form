@@ -1,7 +1,7 @@
 "use client";
 import { MainContext } from "@/contexts/MainContext";
 import React, { useContext, useEffect } from "react";
-import FormStep1 from "../FormStep1";
+import FormStep1 from "../FormStep1/FormStep1";
 import Steps from "../Steps";
 import Footer from "../Footer";
 import bgSidebarMobile from "../../assets/images/bg-sidebar-mobile.svg";

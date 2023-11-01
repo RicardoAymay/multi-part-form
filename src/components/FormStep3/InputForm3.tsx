@@ -26,8 +26,6 @@ const InputForm3 = forwardRef(
   ) => {
     const { recurrence } = useContext(MainContext);
 
-    const figureStyles = "bg-primary-PurplishBlue";
-
     return (
       <>
         <div className="flex">
@@ -62,7 +60,7 @@ const InputForm3 = forwardRef(
           </label>
         </div>
 
-        {/* {errors.id && <p className="text-red-600">{errors.id.message}</p>} */}
+    
       </>
     );
   }
