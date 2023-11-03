@@ -1,11 +1,9 @@
 import Image from "next/image";
 import React, {
   ForwardedRef,
-  useRef,
   InputHTMLAttributes,
   forwardRef,
   useContext,
-  useState,
 } from "react";
 import imgCheck from "../../assets/images/icon-checkmark.svg";
 import { MainContext } from "../../contexts/MainContext";
