@@ -26,5 +26,5 @@ const InputForm1 = forwardRef((
     />
     </div>
 )});
-
+InputForm1.displayName = 'InputForm1'
 export default InputForm1;

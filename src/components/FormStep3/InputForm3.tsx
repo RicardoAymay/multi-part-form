@@ -63,5 +63,5 @@ const InputForm3 = forwardRef(
     );
   }
 );
-
+InputForm3.displayName = 'InputForm3'
 export default InputForm3;
