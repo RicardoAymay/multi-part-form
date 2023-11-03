@@ -17,7 +17,7 @@ const FormStep1 = () => {
     resolver: yupResolver(form1schema)});
 
  const {formStepChange, setFormData, formData, step} = useContext(MainContext)
-  const onSubmit: SubmitHandler<iForm1Inputs> = (data) => {console.log(data), setFormData(data), formStepChange()};
+  const onSubmit: SubmitHandler<iForm1Inputs> = (data) => {setFormData(data), formStepChange()};
   
   const autoFillInputs = () => {
     if (formData) {
