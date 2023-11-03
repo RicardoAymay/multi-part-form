@@ -44,7 +44,7 @@ const InputForm3 = forwardRef(
 
           <label
             htmlFor={inputProps.id}
-            className={`flex h-fit w-full items-center justify-center pl-14 peer-checked:bg-neutral-Alabaster peer-checked:border-primary-PurplishBlue bg-white border rounded-md group`}
+            className={`flex h-fit hover:border-primary-PurplishBlue w-full items-center justify-center pl-14 peer-checked:bg-neutral-Alabaster peer-checked:border-primary-PurplishBlue bg-white border rounded-md group`}
           >
             <div className="w-6/12 h-16 flex flex-1 flex-col justify-center space-y-1">
               <p className="text-sm text-primary-MarineBlue font-bold">

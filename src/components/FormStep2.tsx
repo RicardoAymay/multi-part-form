@@ -11,7 +11,7 @@ import {
   iForm2Inputs,
   iForm1Inputs,
 } from "../contexts/contextTypes/mainContextTypes";
-import { FormHeader, header2 } from "./FormHeader";
+import { FormHeader, header2 } from "./FormHeaders";
 
 interface iInputs2 {
   plan: "arcade" | "advanced" | "pro" | null;
@@ -45,7 +45,6 @@ const FormStep2 = () => {
       data.recurrence === "monthly" ? monthlyPrice[plan!] : yearlyPrice[plan!];
 
     const dataToset = { ...data, pricePlan: price };
-    console.log(dataToset);
     formStepChange();
     setFormData((prevData: iForm1Inputs) => ({ ...prevData, ...dataToset }));
   };
@@ -108,7 +107,7 @@ const FormStep2 = () => {
         <div className="flex maxmd:flex-col maxmd:space-y-4 items-center justify-between md:h-40 mb-6">
           <label
             htmlFor="arcade"
-            className={`text-primary-MarineBlue md:p-3 md:h-full md:flex md:flex-col h-[4.5rem] w-full md:w-[30%] rounded-md ${setCheckedStyle(
+            className={`text-primary-MarineBlue cursor-pointer hover:border-primary-PurplishBlue md:p-3 md:h-full md:flex md:flex-col h-[4.5rem] w-full md:w-[30%] rounded-md ${setCheckedStyle(
               "arcade"
             )}`}
           >
@@ -143,7 +142,7 @@ const FormStep2 = () => {
 
           <label
             htmlFor="advanced"
-            className={`text-primary-MarineBlue md:p-3 md:h-full md:flex md:flex-col h-[4.5rem] w-full md:w-[30%] rounded-md ${setCheckedStyle(
+            className={`text-primary-MarineBlue cursor-pointer hover:border-primary-PurplishBlue md:p-3 md:h-full md:flex md:flex-col h-[4.5rem] w-full md:w-[30%] rounded-md ${setCheckedStyle(
               "advanced"
             )}`}
           >
@@ -175,7 +174,7 @@ const FormStep2 = () => {
 
           <label
             htmlFor="pro"
-            className={`text-primary-MarineBlue md:p-3 md:h-full md:flex md:flex-col h-[4.5rem] w-full md:w-[30%] rounded-md ${setCheckedStyle(
+            className={`text-primary-MarineBlue cursor-pointer hover:border-primary-PurplishBlue md:p-3 md:h-full md:flex md:flex-col h-[4.5rem] w-full md:w-[30%] rounded-md ${setCheckedStyle(
               "pro"
             )}`}
           >

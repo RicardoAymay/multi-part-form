@@ -10,20 +10,20 @@ interface iInputForm1 extends InputHTMLAttributes<HTMLInputElement> {
   label: string
 }
 
+
 const InputForm1 = forwardRef((
   { error, field, label, ...inputProps }: iInputForm1, ref: ForwardedRef<HTMLInputElement> 
 ) => {
     return(
-  <div className="w-full h-fit flex flex-col">
-    <label htmlFor={field} className="text-primary-MarineBlue font-medium">
-      {label}
+  <div className="w-full h-fit flex flex-col space-y-1">
+    <label htmlFor={field} className="text-primary-MarineBlue font-medium flex justify-between items-center">
+      {label}  {error ? <p className="text-primary-StrawberryRed text-xs mt-2">{error.message}</p>: null}
     </label>
     <input
       {...inputProps}
       ref={ref}
-      className="border-neutral-LightGray border-borderWid1 rounded-md h-10 pl-3"
+      className="border-neutral-LightGray border text-primary-MarineBlue hover:border-primary-PurplishBlue rounded-md h-12 pl-3"
     />
-    {error ? <p className="text-red-600 text-xs">{error.message}</p>: null}
     </div>
 )});
 

@@ -1,30 +1,18 @@
 import React, { useContext } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import {FormHeader, header3 } from "../FormHeader";
+import {FormHeader, header3 } from "../FormHeaders";
 import { MainContext } from '../../contexts/MainContext';
-
-import { iFormData } from '../../contexts/contextTypes/mainContextTypes';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { form3Schema } from "../../schemas/formSchemas";
+import { iForm3Inputs, iFormData } from '../../contexts/contextTypes/mainContextTypes';
 import InputForm3 from "./InputForm3";
 import { form3Info } from "./form3Info";
 
 
-interface form3Data{
-online? : number | false
-storage? : number | false
-customProfile?: number | false
-}
 
 const FormStep3 = () => {
   const {recurrence, formStepChange, setFormData} = useContext(MainContext)
-  const { handleSubmit, register, formState: {errors}} = useForm<form3Data>({
-    
-    // resolver: yupResolver(form3Schema),
-    
-  });
+  const { handleSubmit, register, formState: {errors}} = useForm<iForm3Inputs>({});
    
-  const onSubmit: SubmitHandler<any> = (data : form3Data) => {
+  const onSubmit: SubmitHandler<iForm3Inputs> = (data : iForm3Inputs) => {
     const filterAddons = () => {
       const addon = []
       if (data.online && data.online > 0){
@@ -50,9 +38,7 @@ const FormStep3 = () => {
     }
 
     const addons = filterAddons()
-    console.log(addons)
     const addonsTotal = addons.reduce((acc, current) => acc + current.value, 0);
-    console.log(addonsTotal)
     formStepChange()
     if(data){setFormData((prevData: iFormData) => ({...prevData, addons, addonsTotal}))}
     };

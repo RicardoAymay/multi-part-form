@@ -29,6 +29,8 @@ interface FormHeaderProps {
   }
   
   export const FormHeader: React.FC<FormHeaderProps> = ({ p1, p2 }) => {
+
+
     return (
       <>
         <p className="text-2xl text-primary-MarineBlue font-bold">
@@ -41,6 +43,19 @@ interface FormHeaderProps {
     );
   };
 
- 
+   export const Form5Header: React.FC<FormHeaderProps> = ({ p1, p2 }) => {
+    
+
+    return (
+      <>
+        <p className="text-2xl text-primary-MarineBlue font-bold">
+          {p1}
+        </p>
+        <p className="text-primary-CoolGray mb-8 text-center mt-2 font-normal">
+          {p2}
+        </p>
+      </>
+    );
+  };
   
   

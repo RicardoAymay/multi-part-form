@@ -1,19 +1,36 @@
 import React, { useContext } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
 import { MainContext } from "../../contexts/MainContext";
-import ChosenAddons from './ChosenAddons';
-import {FormHeader, header4 } from "../FormHeader";
-
+import {FormHeader, header4 } from "../FormHeaders";
+import ChosenAddons from "./ChosenAddons";
+import { iFormData } from "@/contexts/contextTypes/mainContextTypes";
 
 const FormStep4 = () => {
-  const onSubmit: SubmitHandler<any> = (data) => console.log(data);
-  const { formData, recurrence } = useContext(MainContext);
-  console.log(formData)
+  const { formData, recurrence, setRecurrence, setFormData } = useContext(MainContext);
   const renderAddons = formData.addons
   const textRecurrence = recurrence === "monthly"? "mo" : "yr"
   const finalRecurrence = recurrence === "monthly"? "month" : "year"
-  const finalPrice = formData.addonsTotal + formData.pricePlan  
+  let finalPrice = formData.addonsTotal + formData.pricePlan  
+  
+ 
+  const toggleRecurrence = () => {
+    const newRecurrence = recurrence === "monthly" ? "yearly" : "monthly";
+    const newPricePlan = newRecurrence === "monthly" ? formData.pricePlan / 10 : formData.pricePlan * 10;
+     
+   const newAddonsPricing = formData.addons.map((element: any ) => newRecurrence === "monthly"? element.value = element.value/10 : element.value = element.value*10)
+   const newAddonsTotal = newAddonsPricing.reduce((acc: number, current: number) => acc + current, 0)
+  
 
+    setRecurrence(newRecurrence);
+
+    setFormData((prevData: iFormData) => ({
+      ...prevData,
+      pricePlan: newPricePlan,
+      recurrence: newRecurrence,
+      addonsTotal: newAddonsTotal
+    }));
+  };
+  
+  
   return (
     <form
       id="form4"
@@ -27,9 +44,9 @@ const FormStep4 = () => {
             <p className=" leading-none text-primary-MarineBlue font-bold capitalize">
               {formData.plan} ({recurrence})
             </p>
-            <p className="leading-none text-primary-CoolGray mb-8 mt-2 font-normal underline">
+            <button type="button" onClick={toggleRecurrence} className="leading-none text-primary-CoolGray mb-8 mt-2 font-normal underline">
               Change
-            </p>
+            </button>
           </div>
           <div className="h-full md:h-2 w-fit flex items-center justify-center text-primary-MarineBlue font-bold">
             ${formData.pricePlan}/{textRecurrence}

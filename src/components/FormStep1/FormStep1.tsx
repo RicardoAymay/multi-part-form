@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { MainContext } from '../../contexts/MainContext';
-import { FormHeader,  header1 } from "../FormHeader";
+import { FormHeader,  header1 } from "../FormHeaders";
 import { iForm1Inputs } from '../../contexts/contextTypes/mainContextTypes';
 import { yupResolver } from "@hookform/resolvers/yup";
 import { form1schema } from "@/schemas/formSchemas";

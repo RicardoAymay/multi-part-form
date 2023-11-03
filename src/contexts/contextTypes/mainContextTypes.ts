@@ -33,6 +33,12 @@ export interface iForm2Inputs {
   recurrence: "monthly" | "yearly";
 }
 
+export interface iForm3Inputs {
+  online?: number | null | undefined;
+  storage?: number | null | undefined;
+  customProfile?: number | null | undefined;
+}
+
 export interface iMainProvider {
   children: React.ReactNode;
 }
@@ -40,5 +46,5 @@ export interface iMainProvider {
 export interface iFormData {
   formStep1: iForm1Inputs;
   formStep2: iForm2Inputs;
-  // ADD THE REST OF THE FORMS HERE! ALSO MUST ADD THE DEFAULT VALUES!
+  formStep3: iForm3Inputs;
 }

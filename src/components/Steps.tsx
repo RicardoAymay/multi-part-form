@@ -30,7 +30,7 @@ const Steps = () => {
             <p className={stepColor(el)}>{el.step}</p>
           <div className="w-3/4">
             <article className="flex flex-col w-3/4 pl-3 h-full">
-              <p className="hidden md:flex md:text-primary-CoolGray">STEP {el.step}</p>
+              <p className="hidden md:flex md:text-primary-PastelBlue md:font-normal">STEP {el.step}</p>
               <p className="maxmd:hidden">{el.info}</p>
             </article>
           </div>
